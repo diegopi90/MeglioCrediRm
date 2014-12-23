@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-dic-2014 18.51.09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="classDb.Pratica" table="PRATICA">
+       <id name="codf" type="java.lang.String">
+			<column name="CODF" />
+			<generator class="foreign">
+				<param name="property">cliente</param>
+			</generator>
+		</id>
+        <property name="nrsecci" type="java.lang.String">
+            <column name="NRSECCI" />
+        </property>
+        <property name="nrctr" type="java.lang.String">
+            <column name="NRCTR" />
+        </property>
+        <property name="rata" type="double">
+            <column name="RATA" />
+        </property>
+        <property name="durata" type="int">
+            <column name="DURATA" />
+        </property>
+        <property name="tipo" type="java.lang.String">
+            <column name="TIPO" />
+        </property>
+        <property name="importoErogato" type="double">
+            <column name="IMPORTOEROGATO" />
+        </property>
+        <property name="spese" type="double">
+            <column name="SPESE" />
+        </property>
+        <property name="tan" type="double">
+            <column name="TAN" />
+        </property>
+        <property name="taeg" type="double">
+            <column name="TAEG" />
+        </property>
+        <property name="teg" type="double">
+            <column name="TEG" />
+        </property>
+        <property name="garanzia" type="java.lang.String">
+            <column name="GARANZIA" />
+        </property>
+        <property name="quintoMax" type="double">
+            <column name="QUINTOMAX" />
+        </property>
+        <property name="estinzione" type="java.lang.String">
+            <column name="ESTINZIONE" />
+        </property>
+        <property name="rataEstinzione" type="double">
+            <column name="RATAESTINZIONE" />
+        </property>
+        <property name="scadenza" type="java.lang.String">
+            <column name="SCADENZA" />
+        </property>
+        <property name="statoPratica" type="java.lang.String">
+            <column name="STATOPRATICA" />
+        </property>
+        <property name="datarinnovo" type="java.lang.String">
+            <column name="DATARINNOVO" />
+        </property>        
+        <one-to-one name="cliente" class="classDb.Cliente" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

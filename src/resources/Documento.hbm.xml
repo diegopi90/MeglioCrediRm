@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-dic-2014 18.51.09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="classDb.Documento" table="DOCUMENTO">
+       <id name="codf" type="java.lang.String">
+			<column name="CODF" />
+			<generator class="foreign">
+				<param name="property">cliente</param>
+			</generator>
+		</id>
+        <property name="tipoDocumento" type="java.lang.String">
+            <column name="TIPODOCUMENTO" />
+        </property>
+        <property name="numeroDoc" type="java.lang.String">
+            <column name="NUMERODOC" />
+        </property>
+        <property name="rilascio" type="java.lang.String">
+            <column name="RILASCIO" />
+        </property>
+        <property name="luogo" type="java.lang.String">
+            <column name="LUOGO" />
+        </property>
+        <property name="scadenza" type="java.lang.String">
+            <column name="SCADENZA" />
+        </property>
+        <one-to-one name="cliente" class="classDb.Cliente" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

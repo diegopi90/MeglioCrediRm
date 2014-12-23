@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-dic-2014 18.51.09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="classDb.Conto" table="CONTO">
+       <id name="codf" type="java.lang.String">
+			<column name="CODF" />
+			<generator class="foreign">
+				<param name="property">cliente</param>
+			</generator>
+		</id>
+        <property name="banca" type="java.lang.String">
+            <column name="BANCA" />
+        </property>
+        <property name="iban" type="java.lang.String">
+            <column name="IBAN" />
+        </property>
+        <property name="dataConto" type="java.lang.String">
+            <column name="DATACONTO" />
+        </property>
+        <property name="stipendio" type="java.lang.String">
+            <column name="STIPENDIO" />
+        </property>
+        
+        <one-to-one name="cliente" class="classDb.Cliente" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

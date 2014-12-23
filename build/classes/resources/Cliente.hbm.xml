@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-dic-2014 18.51.09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="classDb.Cliente" table="CLIENTE">
+        <id name="cf" type="java.lang.String">
+            <column name="CF" />
+            <generator class="assigned" />
+        </id>
+        <property name="cognome" type="java.lang.String">
+            <column name="COGNOME" />
+        </property>
+        <property name="nome" type="java.lang.String">
+            <column name="NOME" />
+        </property>
+        <property name="dataNascita" type="java.lang.String">
+            <column name="DATANASCITA" />
+        </property>
+        <property name="luogoNascita" type="java.lang.String">
+            <column name="LUOGO" />
+        </property>
+        <property name="provNascita" type="java.lang.String">
+            <column name="PROVINCIA" />
+        </property>
+        <property name="capNascita" type="java.lang.String">
+            <column name="CAP" />
+        </property>
+        <property name="telefono" type="java.lang.String">
+            <column name="TELEFONO" />
+        </property>
+        <property name="email" type="java.lang.String">
+            <column name="EMAIL" />
+        </property>
+        <property name="statoCivile" type="java.lang.String">
+            <column name="STATOCIVILE" />
+        </property>
+        <property name="beni" type="java.lang.String">
+            <column name="BENI" />
+        </property>
+        <property name="occupazione" type="java.lang.String">
+            <column name="OCCUPAZIONE" />
+        </property>
+        <property name="dalOccupazione" type="java.lang.String">
+            <column name="DAL" />
+        </property>
+        <property name="ente" type="java.lang.String">
+            <column name="ENTE" />
+        </property>
+        <property name="cat" type="java.lang.String">
+            <column name="CAT" />
+        </property>
+        <property name="note" type="java.lang.String">
+            <column name="NOTE" />
+        </property>
+        <one-to-one name="conto" class="classDb.Conto"></one-to-one>
+        <one-to-one name="documento" class="classDb.Documento"></one-to-one>
+        <one-to-one name="residenza" class="classDb.Residenza"></one-to-one>
+        <one-to-one name="pratica" class="classDb.Pratica"></one-to-one>
+    </class>
+</hibernate-mapping>

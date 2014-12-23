@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<h:body>
+<h:form id="form">
+                 
+    <p:growl id="growl" sticky="true" showDetail="true"/>
+ <p:tabView dynamic="true" cache="true">
+        <p:tab id="anagrafica" title="Anagrafica">
+            <p:panel header="Dati Personali">
+                <p:messages />
+                <h:panelGrid columns="4" columnClasses="label, value" cellpadding="5">
+                
+
+                   <p:selectOneMenu id="statopratica" value="#{meglioCrediService.pratica.statoPratica}" style="width:150px">
+            			<f:selectItem itemLabel="Stato Pratica" itemValue="Stato Pratica" />
+            			<f:selectItem itemLabel="Web" itemValue="Web" />
+            			<f:selectItem itemLabel="Cliente" itemValue="Cliente" />
+            			<f:selectItem itemLabel="WebCliente" itemValue="WebCliente" />
+		            </p:selectOneMenu>
+		            
+                    <h:outputText id="datains" value="#{meglioCrediService.cliente.datains}" style="color: red"/>		            
+                    <h:outputText value="Eta" />
+                    <h:outputText id="eta" value="#{meglioCrediService.cliente.eta}" style="color: red"/>		            
+		            
+		            <h:outputText value="NrSecci " />
+                    <p:inputText value="#{meglioCrediService.pratica.nrsecci}"/>
+                    
+                    <h:outputText value="NrCTR " />
+                    <p:inputText value="#{meglioCrediService.pratica.nrctr}"/> 
+
+		            <h:outputText value="           " />
+		            <h:outputText value="           " />
+		            <h:outputText value="           " />
+		            <h:outputText value="           " />
+		            
+                    <h:outputText value="Codice Fiscale *" />
+                    <p:inputText value="#{meglioCrediService.cliente.cf}" required="true" label="cf"/>                
+                
+                    <h:outputText value="Cognome *" />
+                    <p:inputText value="#{meglioCrediService.cliente.cognome}" required="true" label="Cognome"/>
+ 
+                    <h:outputText value="Nome *" />
+                    <p:inputText value="#{meglioCrediService.cliente.nome}" required="true" label="Nome"/>
+ 
+                    <h:outputText value="Data di Nascita " />
+			        <p:inputMask id="date" value="#{meglioCrediService.cliente.dataNascita}" mask="99/99/9999">
+			        <p:ajax event="blur" update="eta" /> 			        
+			        </p:inputMask>
+			        
+			        <h:outputText value="Luogo di Nascita" />
+                    <p:inputText value="#{meglioCrediService.cliente.luogoNascita}" label="luogoNascita"/>
+                    
+			        <h:outputText value="Provincia" />
+                    <p:inputText value="#{meglioCrediService.cliente.provNascita}"  label="provNascita"/>                    
+			        
+			        <h:outputText value="CAP" />
+                    <p:inputText value="#{meglioCrediService.cliente.capNascita}" label="capNascita"/>
+                    
+                    <h:outputText value="Telefono" />
+                    <p:inputText value="#{meglioCrediService.cliente.telefono}" label="telefono"/>
+                    
+                    <h:outputText value="Email" />
+                    <p:inputText value="#{meglioCrediService.cliente.email}" label="email"
+                    validatorMessage="Email non valida">
+                    <f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+                    </p:inputText>
+                    
+                    <h:outputText value="Residente a" />
+                    <p:inputText value="#{meglioCrediService.residenza.luogo}" label="luogoResidenza"/>
+                    
+                    <h:outputText value="Provincia Resid." />
+                    <p:inputText value="#{meglioCrediService.residenza.provincia}" label="provinciaResidenza"/>
+                    
+                    <h:outputText value="CAP Residenza" />
+                    <p:inputText value="#{meglioCrediService.residenza.cap}" label="capResidenza"/>
+                    
+                    <h:outputText value="Indirizzo Resid." />
+                    <p:inputText value="#{meglioCrediService.residenza.indirizzo}" label="indirizzoResidenza"/>
+                    
+                    <h:outputText value="Domicilio" />
+                    <p:inputText value="#{meglioCrediService.residenza.domicilio}" label="domicilioResidenza"/>
+                    
+                    		            			        		            		            <h:outputText value="           " />
+                    
+                    
+                    <p:selectOneMenu id="corrispondenza" value="#{meglioCrediService.residenza.corrispondenza}" style="width:175px">
+            			<f:selectItem itemLabel="Corrispondenza" itemValue="Corrispondenza" />
+            			<f:selectItem itemLabel="Residenza" itemValue="Residenza" />
+            			<f:selectItem itemLabel="Domicilio" itemValue="Domicilio" />
+		            </p:selectOneMenu>
+		            		            
+		            
+		            <p:selectOneMenu id="statocivile" value="#{meglioCrediService.cliente.statoCivile}" style="width:150px">
+            			<f:selectItem itemLabel="Stato Civile" itemValue="Stato Civile" />
+            			<f:selectItem itemLabel="Vedovo" itemValue="Vedovo" />
+            			<f:selectItem itemLabel="Coniugato" itemValue="Coniugato" />
+            			<f:selectItem itemLabel="Nubile" itemValue="Nubile" />
+            		    <f:selectItem itemLabel="Celibe" itemValue="Celibe" />
+            		    <f:selectItem itemLabel="Separato" itemValue="Separato" />
+		            </p:selectOneMenu>
+ 
+ 		            <p:selectOneMenu id="beni" value="#{meglioCrediService.cliente.beni}" style="width:125px">
+            			<f:selectItem itemLabel="Beni" itemValue="Beni" />
+            			<f:selectItem itemLabel="Separazione" itemValue="Separazione" />
+            			<f:selectItem itemLabel="Comunione" itemValue="Comunione" />
+		            </p:selectOneMenu>
+		            		            
+		            
+		                <h3>Note</h3>
+    				<p:inputTextarea rows="5" cols="33" value="#{meglioCrediService.cliente.note}"/>
+ 
+                                       
+                </h:panelGrid>
+            </p:panel>
+            
+        </p:tab>
+ 
+        <p:tab id="docbanca" title="Documento/Banca">
+            <p:panel header="Dettagli Cliente">
+                <p:messages />
+                <h:panelGrid columns="4" columnClasses="label, value" cellpadding="5">
+                        <p:outputLabel for="documento" value="Documento" />
+		            <p:selectOneMenu id="documento" value="#{meglioCrediService.doc.tipoDocumento}" style="width:175px">
+            			<f:selectItem itemLabel="Carta Identita" itemValue="Carta Identita" />
+            			<f:selectItem itemLabel="Patente" itemValue="Patente" />
+            			<f:selectItem itemLabel="Passaporto" itemValue="Passaporto" />
+		            </p:selectOneMenu>
+		            
+		            			        		            <h:outputText value="           " />
+			        		            		            <h:outputText value="           " />
+
+		            
+		            <h:outputText value="Numero" />
+                    <p:inputText value="#{meglioCrediService.doc.numeroDoc}"/>
+ 
+                    <h:outputText value="Data Rilascio" />
+			        <p:inputMask id="datedoc" value="#{meglioCrediService.doc.rilascio}" mask="99/99/9999"/>
+ 
+		            <h:outputText value="Luogo Rilascio" />
+                    <p:inputText value="#{meglioCrediService.doc.luogo}"/>
+                    
+                     <h:outputText value="Scadenza" />
+			        <p:inputMask id="datescadDoc" value="#{meglioCrediService.doc.scadenza}" mask="99/99/9999"/>
+			        
+			        		            		            <h:outputText value="           " />
+			        		            		            <h:outputText value="           " />
+			        		            		            <h:outputText value="           " />
+			        		            		            <h:outputText value="           " />
+			        
+			        
+			        <h:outputText value="Banca " />
+                    <p:inputText value="#{meglioCrediService.conto.banca}"/>
+                    
+                    
+                    <h:outputText value="Iban " />
+                    <p:inputMask id="iban" value="#{meglioCrediService.conto.iban}" mask="aa99a9999999999999999999999"/>
+                    
+                    <h:outputText value="Data Conto" />
+			        <p:inputMask id="dateconto" value="#{meglioCrediService.conto.dataConto}" mask="99/99/9999"/>
+			        
+			        <h:outputText for="stipendio" value="Stipendio: " />
+		            <p:selectOneMenu id="stipendio" value="#{meglioCrediService.conto.stipendio}">
+            			<f:selectItem itemLabel="Si" itemValue="s" />
+            			<f:selectItem itemLabel="No" itemValue="n" />
+		            </p:selectOneMenu>                       
+ 
+                    
+            </h:panelGrid>       
+            </p:panel>
+            
+            
+        </p:tab>
+        
+                <p:tab id="occupazionecliente" title="Occupazione Cliente">
+            <p:panel header="Informazioni Impiego Cliente">
+                <p:messages />
+                <h:panelGrid columns="4" columnClasses="label, value" cellpadding="5">
+                
+
+ 		            <p:selectOneMenu id="occupazione" style="width:150px">
+            			<f:selectItem itemLabel="Dipendente" itemValue="Dipendente" />
+            			<f:selectItem itemLabel="Pensionato" itemValue="Pensionato" />
+		            </p:selectOneMenu> 
+		            
+		            		            			        <h:outputText value="           " />
+			        		            		            <h:outputText value="           " />
+			        		            		            <h:outputText value="           " />
+		            
+                    <h:outputText value="Dal" />
+			        <p:inputMask id="datedaloccupazione" value="#{meglioCrediService.cliente.dalOccupazione}" mask="99/99/9999">
+			        <p:ajax event="blur" update="anniassunzione" /> 			        			        
+			        </p:inputMask>
+			        
+			        <h:outputText value="Anni Assunzione " />
+                    <h:outputText id="anniassunzione" value="#{meglioCrediService.cliente.anniAssunzione}" style="color: red"/> 
+                    
+                    <h:outputText value="Lavoro " />
+                    <p:inputText id="lavoro" value="#{meglioCrediService.cliente.occupazione}"/> 
+ 
+                    <h:outputText value="Ente " />
+                    <p:inputText id="ente" value="#{meglioCrediService.cliente.ente}"/>
+                    
+                    <h:outputText value="Cat. " />
+                    <p:inputText id="cat" value="#{meglioCrediService.cliente.cat}"/>
+                    
+             			        		            	   <h:outputText value="           " />
+                    			        		           <h:outputText value="           " />
+                
+             </h:panelGrid>      
+          </p:panel>  
+                    
+        </p:tab>
+        
+ 
+        <p:tab id="pratica" title="Pratica">
+            <p:panel header="Informazioni Pratica">
+                <p:messages />
+                <h:panelGrid columns="4" columnClasses="label, value" cellpadding="5">	        		           
+                    			        		           
+                  	<p:selectOneMenu id="tipopratica" style="width:150px" value="#{meglioCrediService.pratica.tipo}">
+            			<f:selectItem itemLabel="Tipo Pratica" itemValue="Tipo Pratica" />
+            			<f:selectItem itemLabel="CQS" itemValue="CQS" />
+            			<f:selectItem itemLabel="DLG" itemValue="DLG" />
+            			<f:selectItem itemLabel="CQP" itemValue="CQP" />            			
+		            </p:selectOneMenu>    
+                   
+                   
+		            <p:inputText id="dur" value="#{meglioCrediService.pratica.durata}" style="display:none"/>  
+		            <p:inputText id="spes" value="#{meglioCrediService.pratica.spese}" style="display:none"/>  
+		        	<h:outputText id="datacar" value="#{meglioCrediService.pratica.datacar}" style="color: red"/>
+			        		            		            
+                    <h:outputText value="Rata" />
+		        <p:inputText id="rata" value="#{meglioCrediService.pratica.rata}">
+                   <f:validateDoubleRange minimum="0.00" maximum="9999999.99" />
+                    <p:ajax event="keyup" update="montante"/>
+                    <p:ajax event="blur" update="datacar"/>
+                    </p:inputText>
+                    
+                    <h:outputText for="durata" value="Durata " />
+                    <p:selectOneMenu id="durata" style="width:150px" value="#{meglioCrediService.pratica.durata}">
+                        <f:selectItem itemLabel="" itemValue=""/>                   
+                        <f:selectItem itemLabel="120" itemValue="120"/>
+                        <f:selectItem itemLabel="108" itemValue="108"/>
+                        <f:selectItem itemLabel="96" itemValue="96"/>
+                        <f:selectItem itemLabel="84" itemValue="84"/>
+                        <f:selectItem itemLabel="72" itemValue="72"/>
+                        <f:selectItem itemLabel="60" itemValue="60"/>
+                        <f:selectItem itemLabel="48" itemValue="48"/>
+                        <f:selectItem itemLabel="36" itemValue="36"/>
+                        <f:selectItem itemLabel="24" itemValue="24"/>
+                        <p:ajax event="change" update="montante" />
+                        <p:ajax event="change" update="datarinnovo" />
+                        <p:ajax execute="durata" render="dur" />                        
+		            </p:selectOneMenu>
+                    
+                    <h:outputText value="Importo erogato" />
+			        <p:inputText id="importoerogato" value="#{meglioCrediService.pratica.importoErogato}">
+                   <f:validateDoubleRange minimum="0.00" maximum="9999999.99" />
+                    <p:ajax event="keyup" update="interessi" />
+                    </p:inputText>
+
+                    <h:outputText for="spese" value="Spese " />
+                    <p:selectOneMenu id="spese" style="width:125px" value="#{meglioCrediService.pratica.spese}">
+                        <f:selectItem itemLabel="" itemValue=""/>                                     
+            			<f:selectItem itemLabel="616" itemValue="616" />
+            			<f:selectItem itemLabel="516" itemValue="516" />
+            			<f:selectItem itemLabel="416" itemValue="416" />
+            			<f:selectItem itemLabel="316" itemValue="316" />
+            			<f:selectItem itemLabel="216" itemValue="216" />
+            			<p:ajax event="change" update="interessi" />
+            			<p:ajax execute="spese" render="spes" />             			        			            			            			
+		            </p:selectOneMenu>
+		            
+		            <h:outputText value="QuintoMax" />
+			        <p:inputText id="quintomax" value="#{meglioCrediService.pratica.quintoMax}" >
+                   <f:validateDoubleRange minimum="0.00" maximum="9999.99" />
+                   <p:ajax event="keyup" update="nettomensile" />
+                    </p:inputText>
+                    
+		            <h:outputText value="TAN" />
+			        <p:inputText id="tan" value="#{meglioCrediService.pratica.tan}">
+			         <f:validateDoubleRange minimum="0.00" maximum="99.99" />
+			        </p:inputText>
+			        
+			        <h:outputText value="TAEG" />
+			        <p:inputText id="taeg" value="#{meglioCrediService.pratica.taeg}">
+			         <f:validateDoubleRange minimum="0.00" maximum="99.99" />			         
+			        </p:inputText>
+			        
+			        <h:outputText value="TEG" />
+			        <p:inputText id="teg" value="#{meglioCrediService.pratica.teg}">
+			         <f:validateDoubleRange minimum="0.00" maximum="99.99" />
+			        </p:inputText>
+			        
+				     <p:outputLabel for="garanzia" value="Garanzia" />
+				        <p:selectOneMenu id="garanzia" value="#{meglioCrediService.pratica.garanzia}" effect="fold" editable="true">
+	            			<f:selectItem itemLabel="NetInsurance" itemValue="NetInsurance" />
+	            			<f:selectItem itemLabel="Vittoria" itemValue="Vittoria" />
+	            			<f:selectItem itemLabel="HDI Assicurazione" itemValue="HDI Assicurazione" />
+	            			<f:selectItem itemLabel="AXA" itemValue="AXA" />            			
+	            			<f:selectItem itemLabel="Cattolica" itemValue="Cattolica" />            			
+	            			<f:selectItem itemLabel="Ergo" itemValue="Ergo" />            			
+	            			<f:selectItem itemLabel="MetLife" itemValue="MetLife" />            			
+	            			<f:selectItem itemLabel="Cardif" itemValue="Cardif" /> 
+				     	</p:selectOneMenu>	
+				     	
+				     <p:outputLabel for="estinzione" value="Estinzione" />
+				        <p:selectOneMenu id="estinzione" value="#{meglioCrediService.pratica.estinzione}" effect="fold" editable="true">
+	            			<f:selectItem itemLabel="Intesa San Paolo" itemValue="Intesa San Paolo" />
+	            			<f:selectItem itemLabel="IBL Banca" itemValue="IBL Banca" />
+	            			<f:selectItem itemLabel="PrestItalia" itemValue="PrestItalia" />
+	            			<f:selectItem itemLabel="Unicredit" itemValue="Unicredit" />            			
+	            			<f:selectItem itemLabel="BNL" itemValue="BNL" />            			
+	            			<f:selectItem itemLabel="AGOS" itemValue="AGOS" />            			
+	            			<f:selectItem itemLabel="Unifin" itemValue="Unifin" />            			
+				     	</p:selectOneMenu>	
+				     
+				     <h:outputText value="Rata Estinzione" />
+			        <p:inputText id="rataEstinzione" value="#{meglioCrediService.pratica.rataEstinzione}">
+			         <f:validateDoubleRange minimum="0.00" maximum="999.99" />
+			         <p:ajax event="blur" update="conteggioestinzione"/>
+			        </p:inputText>
+			        
+			        <h:outputText value="Scadenza" />
+			        <p:inputMask id="scadenza" value="#{meglioCrediService.pratica.scadenza}" mask="99/99/9999">
+			        <p:ajax event="blur" update="mesiscadenza" />
+			        <p:ajax event="blur" update="conteggioestinzione" />
+			        </p:inputMask>
+			        
+			        <h:outputText value="Netto Mensile" />
+			        <h:outputText id="nettomensile" value="#{meglioCrediService.pratica.nettomensile}" style="color: red"/>
+			        
+			        <h:outputText value="Montante" />
+			        <h:outputText id="montante" value="#{meglioCrediService.pratica.montante}" style="color: red"/>
+
+			        
+			        <h:outputText value="Interessi" />
+			        <h:outputText id="interessi" value="#{meglioCrediService.pratica.interessi}" style="color: red"/>
+			        
+			        
+			        <h:outputText value="Mesi Scadenza" />
+			        <h:outputText id="mesiscadenza" value="#{meglioCrediService.pratica.mesiscadenza}" style="color: red"/>
+
+				    
+				    <h:outputText value="Conteggio Estinzione" />
+			        <h:outputText id="conteggioestinzione" value="#{meglioCrediService.pratica.conteggioestinzione}" style="color: red"/>
+			        
+			        <h:outputText value="Data Rinnovo" />
+			        <h:outputText id="datarinnovo" value="#{meglioCrediService.pratica.datarinnovo}" style="color: red"/>
+				     			        
+                   </h:panelGrid>                               
+            </p:panel>
+ <p:commandButton value="Salva" ajax="false" actionListener="#{meglioCrediService.save}" validateClient="true" style="margin-right:10px" icon="ui-icon-disk"/> 
+ <p:commandButton value="Reset" update="tabView" process="@this" actionListener="#{meglioCrediService.reset}"  style="margin-right:20px;" />
+        
+        </p:tab>        
+	</p:tabView>
+	 
+</h:form>
+</h:body>
+</html>

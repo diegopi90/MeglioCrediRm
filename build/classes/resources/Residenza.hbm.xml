@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 14-dic-2014 18.51.09 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="classDb.Residenza" table="RESIDENZA">
+       <id name="codf" type="java.lang.String">
+			<column name="CODF" />
+			<generator class="foreign">
+				<param name="property">cliente</param>
+			</generator>
+		</id>
+        <property name="luogo" type="java.lang.String">
+            <column name="LUOGO" />
+        </property>
+        <property name="provincia" type="java.lang.String">
+            <column name="PROVINCIA" />
+        </property>
+        <property name="cap" type="java.lang.String">
+            <column name="CAP" />
+        </property>
+        <property name="indirizzo" type="java.lang.String">
+            <column name="INDIRIZZO" />
+        </property>
+        <property name="domicilio" type="java.lang.String">
+            <column name="DOMICILIO" />
+        </property>
+        <property name="corrispondenza" type="java.lang.String">
+            <column name="CORRISPONDENZA" />
+        </property>
+        <one-to-one name="cliente" class="classDb.Cliente" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>
